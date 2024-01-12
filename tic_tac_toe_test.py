@@ -1,39 +1,7 @@
-import asyncio
-import random
-from unittest import TestCase, IsolatedAsyncioTestCase
+from unittest import TestCase
 
 from game_handler import GameBoard, get_computer_input, get_user_input
 from min_max_algo import MinMaxAlgorithm
-
-
-async def async_method():
-    while True:
-        yield random.randint(1, 11)
-
-
-class Test:
-
-    def __await__(self):
-        yield 1
-        yield 2
-        yield 3
-        return 4
-
-
-def async_test(f):
-    def wrapper(*args, **kwargs):
-        coro = asyncio.coroutine(f)
-        future = coro(*args, **kwargs)
-        loop = asyncio.get_event_loop()
-        loop.run_until_complete(future)
-
-    return wrapper
-
-
-class TestAsyncTicTacToe(IsolatedAsyncioTestCase):
-    def test_response(self):
-        result = asyncio.run(Test().__await__())
-        print("Result ", result)
 
 
 class TestTicTacToe(TestCase):
